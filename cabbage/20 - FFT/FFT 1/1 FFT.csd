@@ -29,7 +29,7 @@ rslider bounds(296, 162, 100, 100), channel("gain"), range(0, 1, 0, 1, .01), tex
         kIn[] init ifftsize  ;INPUT BUFFER
         kOut[][] init iolaps, ifftsize ;OUTPUTS BUFFER
  
-        Sfile     = "../../audio/1 Anechoic orchestra.wav"  ;FILE PATH
+        Sfile     = "../../../audio/1 Anechoic orchestra.wav"  ;FILE PATH
         a1, a2 diskin Sfile, 1, 0, 1    ;FILE PLAYER     
 
         if kcnt >= ihopsize then

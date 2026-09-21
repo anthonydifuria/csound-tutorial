@@ -24,7 +24,7 @@ iwinsize  = gifftsize
 iwinshape = 1							;von-Hann window
 
 
-Sfile2     = "../audio/1 Anechoic orchestra.wav"
+Sfile2     = "../../audio/1 Anechoic orchestra.wav"
 ain1,ain2 diskin Sfile2, 1, 0, 1
 
 ;ktrans linseg 0,5,1

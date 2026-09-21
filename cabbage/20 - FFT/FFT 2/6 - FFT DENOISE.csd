@@ -24,7 +24,7 @@ giTabSize = (ifftsize / 2) + 2
 ioverlap  = ifftsize / 4
 iwinsize  = ifftsize
 iwinshape = 1							;von-Hann window
-Sfile     = "../../audio/3 Fiume.wav"
+Sfile     = "../../../audio/3 Fiume.wav"
 ain,ain2 diskin Sfile, 1, 0, 1
 
 fftin     pvsanal ain, ifftsize, ioverlap, iwinsize, iwinshape	;fft-analysis of the audio-signal

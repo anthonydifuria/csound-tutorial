@@ -1,0 +1,11 @@
+#N canvas 60 60 900 268 12;
+#X text 20 10 ARRAY SINE WAVES GENERATOR;
+#X text 20 34 Pure Data / plugdata version. Needs the csound7~ external: see README.md in the pd folder of the repository;
+#X msg 20 58 \; pd dsp 1;
+#X msg 110 58 \; pd dsp 0;
+#X text 200 58 audio on / off;
+#X obj 20 128 csound7~ ARRAY_SINE_WAVES_GENERATOR.csd;
+#X text 280 128 control messages go to the LEFTMOST inlet;
+#X obj 20 178 dac~ 1 2;
+#X connect 5 0 7 0;
+#X connect 5 1 7 1;

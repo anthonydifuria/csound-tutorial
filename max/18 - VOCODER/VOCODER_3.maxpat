@@ -1,0 +1,457 @@
+{
+ "patcher": {
+  "fileversion": 1,
+  "appversion": {
+   "major": 9,
+   "minor": 0,
+   "revision": 2,
+   "architecture": "x64",
+   "modernui": 1
+  },
+  "classnamespace": "box",
+  "rect": [
+   60.0,
+   80.0,
+   900.0,
+   636.0
+  ],
+  "gridsize": [
+   15.0,
+   15.0
+  ],
+  "boxes": [
+   {
+    "box": {
+     "id": "obj-1",
+     "maxclass": "comment",
+     "patching_rect": [
+      20.0,
+      12.0,
+      500.0,
+      20.0
+     ],
+     "text": "VOCODER_3",
+     "numinlets": 1,
+     "numoutlets": 0
+    }
+   },
+   {
+    "box": {
+     "id": "obj-2",
+     "maxclass": "comment",
+     "patching_rect": [
+      20.0,
+      34.0,
+      500.0,
+      20.0
+     ],
+     "text": "Max version. Needs the csound7~ external: see README.md in the max folder of the repository",
+     "numinlets": 1,
+     "numoutlets": 0
+    }
+   },
+   {
+    "box": {
+     "id": "obj-3",
+     "maxclass": "comment",
+     "patching_rect": [
+      20.0,
+      64.0,
+      640.0,
+      20.0
+     ],
+     "text": "This lesson plays a sound file: 1) click the button and choose a file from the audio folder of the repository, 2) click start.",
+     "numinlets": 1,
+     "numoutlets": 0
+    }
+   },
+   {
+    "box": {
+     "id": "obj-4",
+     "maxclass": "button",
+     "patching_rect": [
+      20.0,
+      90.0,
+      24.0,
+      24.0
+     ],
+     "numinlets": 1,
+     "numoutlets": 1,
+     "outlettype": [
+      "bang"
+     ]
+    }
+   },
+   {
+    "box": {
+     "id": "obj-5",
+     "maxclass": "comment",
+     "patching_rect": [
+      50.0,
+      92.0,
+      260.0,
+      20.0
+     ],
+     "text": "open file 1: PAROLAI.WAV",
+     "numinlets": 1,
+     "numoutlets": 0
+    }
+   },
+   {
+    "box": {
+     "id": "obj-6",
+     "maxclass": "newobj",
+     "patching_rect": [
+      20.0,
+      122.0,
+      80.0,
+      22.0
+     ],
+     "text": "opendialog",
+     "numinlets": 1,
+     "numoutlets": 2,
+     "outlettype": [
+      "",
+      "bang"
+     ]
+    }
+   },
+   {
+    "box": {
+     "id": "obj-7",
+     "maxclass": "newobj",
+     "patching_rect": [
+      20.0,
+      152.0,
+      200.0,
+      22.0
+     ],
+     "text": "prepend diskinfile audiofile1",
+     "numinlets": 1,
+     "numoutlets": 1,
+     "outlettype": [
+      ""
+     ]
+    }
+   },
+   {
+    "box": {
+     "id": "obj-8",
+     "maxclass": "comment",
+     "patching_rect": [
+      20.0,
+      200.0,
+      500.0,
+      20.0
+     ],
+     "text": "MIDI keyboard: click the keys (or use a connected MIDI keyboard through midiin)",
+     "numinlets": 1,
+     "numoutlets": 0
+    }
+   },
+   {
+    "box": {
+     "id": "obj-9",
+     "maxclass": "kslider",
+     "patching_rect": [
+      20.0,
+      226.0,
+      336.0,
+      53.0
+     ],
+     "numinlets": 2,
+     "numoutlets": 2,
+     "outlettype": [
+      "int",
+      "int"
+     ]
+    }
+   },
+   {
+    "box": {
+     "id": "obj-10",
+     "maxclass": "newobj",
+     "patching_rect": [
+      20.0,
+      288.0,
+      70.0,
+      22.0
+     ],
+     "text": "pack 0 0",
+     "numinlets": 2,
+     "numoutlets": 1,
+     "outlettype": [
+      ""
+     ]
+    }
+   },
+   {
+    "box": {
+     "id": "obj-11",
+     "maxclass": "newobj",
+     "patching_rect": [
+      20.0,
+      318.0,
+      130.0,
+      22.0
+     ],
+     "text": "prepend midi 144",
+     "numinlets": 1,
+     "numoutlets": 1,
+     "outlettype": [
+      ""
+     ]
+    }
+   },
+   {
+    "box": {
+     "id": "obj-12",
+     "maxclass": "comment",
+     "patching_rect": [
+      20.0,
+      366.0,
+      200.0,
+      20.0
+     ],
+     "text": "start (after choosing the file)",
+     "numinlets": 1,
+     "numoutlets": 0
+    }
+   },
+   {
+    "box": {
+     "id": "obj-13",
+     "maxclass": "comment",
+     "patching_rect": [
+      320.0,
+      366.0,
+      60.0,
+      20.0
+     ],
+     "text": "stop",
+     "numinlets": 1,
+     "numoutlets": 0
+    }
+   },
+   {
+    "box": {
+     "id": "obj-14",
+     "maxclass": "message",
+     "patching_rect": [
+      20.0,
+      388.0,
+      260.0,
+      22.0
+     ],
+     "text": "event i 50 0 -1",
+     "numinlets": 2,
+     "numoutlets": 1,
+     "outlettype": [
+      ""
+     ]
+    }
+   },
+   {
+    "box": {
+     "id": "obj-15",
+     "maxclass": "message",
+     "patching_rect": [
+      320.0,
+      388.0,
+      200.0,
+      22.0
+     ],
+     "text": "event i -50 0 0",
+     "numinlets": 2,
+     "numoutlets": 1,
+     "outlettype": [
+      ""
+     ]
+    }
+   },
+   {
+    "box": {
+     "id": "obj-16",
+     "maxclass": "newobj",
+     "patching_rect": [
+      20.0,
+      436.0,
+      260.0,
+      22.0
+     ],
+     "text": "csound7~ VOCODER_3.csd",
+     "numinlets": 3,
+     "numoutlets": 3,
+     "outlettype": [
+      "signal",
+      "signal",
+      ""
+     ]
+    }
+   },
+   {
+    "box": {
+     "id": "obj-17",
+     "maxclass": "ezdac~",
+     "patching_rect": [
+      20.0,
+      486.0,
+      45.0,
+      45.0
+     ],
+     "numinlets": 2,
+     "numoutlets": 0
+    }
+   },
+   {
+    "box": {
+     "id": "obj-18",
+     "maxclass": "comment",
+     "patching_rect": [
+      300.0,
+      436.0,
+      400.0,
+      20.0
+     ],
+     "text": "control messages go to the RIGHTMOST inlet (inlet 2)",
+     "numinlets": 1,
+     "numoutlets": 0
+    }
+   }
+  ],
+  "lines": [
+   {
+    "patchline": {
+     "destination": [
+      "obj-6",
+      0
+     ],
+     "source": [
+      "obj-4",
+      0
+     ]
+    }
+   },
+   {
+    "patchline": {
+     "destination": [
+      "obj-7",
+      0
+     ],
+     "source": [
+      "obj-6",
+      0
+     ]
+    }
+   },
+   {
+    "patchline": {
+     "destination": [
+      "obj-10",
+      0
+     ],
+     "source": [
+      "obj-9",
+      0
+     ]
+    }
+   },
+   {
+    "patchline": {
+     "destination": [
+      "obj-10",
+      1
+     ],
+     "source": [
+      "obj-9",
+      1
+     ]
+    }
+   },
+   {
+    "patchline": {
+     "destination": [
+      "obj-11",
+      0
+     ],
+     "source": [
+      "obj-10",
+      0
+     ]
+    }
+   },
+   {
+    "patchline": {
+     "destination": [
+      "obj-16",
+      2
+     ],
+     "source": [
+      "obj-7",
+      0
+     ]
+    }
+   },
+   {
+    "patchline": {
+     "destination": [
+      "obj-16",
+      2
+     ],
+     "source": [
+      "obj-11",
+      0
+     ]
+    }
+   },
+   {
+    "patchline": {
+     "destination": [
+      "obj-16",
+      2
+     ],
+     "source": [
+      "obj-14",
+      0
+     ]
+    }
+   },
+   {
+    "patchline": {
+     "destination": [
+      "obj-16",
+      2
+     ],
+     "source": [
+      "obj-15",
+      0
+     ]
+    }
+   },
+   {
+    "patchline": {
+     "destination": [
+      "obj-17",
+      0
+     ],
+     "source": [
+      "obj-16",
+      0
+     ]
+    }
+   },
+   {
+    "patchline": {
+     "destination": [
+      "obj-17",
+      1
+     ],
+     "source": [
+      "obj-16",
+      1
+     ]
+    }
+   }
+  ]
+ }
+}

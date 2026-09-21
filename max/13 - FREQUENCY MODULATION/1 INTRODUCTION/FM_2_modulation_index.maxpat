@@ -1,0 +1,554 @@
+{
+ "patcher": {
+  "fileversion": 1,
+  "appversion": {
+   "major": 9,
+   "minor": 0,
+   "revision": 2,
+   "architecture": "x64",
+   "modernui": 1
+  },
+  "classnamespace": "box",
+  "rect": [
+   60.0,
+   80.0,
+   900.0,
+   468.0
+  ],
+  "gridsize": [
+   15.0,
+   15.0
+  ],
+  "boxes": [
+   {
+    "box": {
+     "id": "obj-1",
+     "maxclass": "comment",
+     "patching_rect": [
+      20.0,
+      12.0,
+      500.0,
+      20.0
+     ],
+     "text": "FM 2 modulation index",
+     "numinlets": 1,
+     "numoutlets": 0
+    }
+   },
+   {
+    "box": {
+     "id": "obj-2",
+     "maxclass": "comment",
+     "patching_rect": [
+      20.0,
+      34.0,
+      500.0,
+      20.0
+     ],
+     "text": "Max version. Needs the csound7~ external: see README.md in the max folder of the repository",
+     "numinlets": 1,
+     "numoutlets": 0
+    }
+   },
+   {
+    "box": {
+     "id": "obj-3",
+     "maxclass": "live.dial",
+     "patching_rect": [
+      20.0,
+      98.0,
+      44.0,
+      48.0
+     ],
+     "numinlets": 1,
+     "numoutlets": 2,
+     "outlettype": [
+      "",
+      "float"
+     ],
+     "parameter_enable": 1,
+     "saved_attribute_attributes": {
+      "valueof": {
+       "parameter_initial": [
+        0.0
+       ],
+       "parameter_initial_enable": 1,
+       "parameter_longname": "FreqMod",
+       "parameter_mmax": 500.0,
+       "parameter_mmin": 0.0,
+       "parameter_modmode": 0,
+       "parameter_shortname": "Freq MOD",
+       "parameter_type": 0
+      }
+     },
+     "varname": "FreqMod"
+    }
+   },
+   {
+    "box": {
+     "id": "obj-4",
+     "maxclass": "newobj",
+     "patching_rect": [
+      20.0,
+      72.0,
+      90.0,
+      22.0
+     ],
+     "text": "loadmess 0",
+     "numinlets": 1,
+     "numoutlets": 1,
+     "outlettype": [
+      ""
+     ]
+    }
+   },
+   {
+    "box": {
+     "id": "obj-5",
+     "maxclass": "newobj",
+     "patching_rect": [
+      20.0,
+      150.0,
+      110.0,
+      22.0
+     ],
+     "text": "prepend FreqMod",
+     "numinlets": 1,
+     "numoutlets": 1,
+     "outlettype": [
+      ""
+     ]
+    }
+   },
+   {
+    "box": {
+     "id": "obj-6",
+     "maxclass": "live.dial",
+     "patching_rect": [
+      195.0,
+      98.0,
+      44.0,
+      48.0
+     ],
+     "numinlets": 1,
+     "numoutlets": 2,
+     "outlettype": [
+      "",
+      "float"
+     ],
+     "parameter_enable": 1,
+     "saved_attribute_attributes": {
+      "valueof": {
+       "parameter_initial": [
+        0.0
+       ],
+       "parameter_initial_enable": 1,
+       "parameter_longname": "Index",
+       "parameter_mmax": 10.0,
+       "parameter_mmin": 0.0,
+       "parameter_modmode": 0,
+       "parameter_shortname": "Index Mod",
+       "parameter_type": 0
+      }
+     },
+     "varname": "Index"
+    }
+   },
+   {
+    "box": {
+     "id": "obj-7",
+     "maxclass": "newobj",
+     "patching_rect": [
+      195.0,
+      72.0,
+      90.0,
+      22.0
+     ],
+     "text": "loadmess 0",
+     "numinlets": 1,
+     "numoutlets": 1,
+     "outlettype": [
+      ""
+     ]
+    }
+   },
+   {
+    "box": {
+     "id": "obj-8",
+     "maxclass": "newobj",
+     "patching_rect": [
+      195.0,
+      150.0,
+      110.0,
+      22.0
+     ],
+     "text": "prepend Index",
+     "numinlets": 1,
+     "numoutlets": 1,
+     "outlettype": [
+      ""
+     ]
+    }
+   },
+   {
+    "box": {
+     "id": "obj-9",
+     "maxclass": "live.dial",
+     "patching_rect": [
+      370.0,
+      98.0,
+      44.0,
+      48.0
+     ],
+     "numinlets": 1,
+     "numoutlets": 2,
+     "outlettype": [
+      "",
+      "float"
+     ],
+     "parameter_enable": 1,
+     "saved_attribute_attributes": {
+      "valueof": {
+       "parameter_initial": [
+        500.0
+       ],
+       "parameter_initial_enable": 1,
+       "parameter_longname": "FreqCar",
+       "parameter_mmax": 4000.0,
+       "parameter_mmin": 50.0,
+       "parameter_modmode": 0,
+       "parameter_shortname": "Freq CAR",
+       "parameter_type": 0
+      }
+     },
+     "varname": "FreqCar"
+    }
+   },
+   {
+    "box": {
+     "id": "obj-10",
+     "maxclass": "newobj",
+     "patching_rect": [
+      370.0,
+      72.0,
+      90.0,
+      22.0
+     ],
+     "text": "loadmess 500",
+     "numinlets": 1,
+     "numoutlets": 1,
+     "outlettype": [
+      ""
+     ]
+    }
+   },
+   {
+    "box": {
+     "id": "obj-11",
+     "maxclass": "newobj",
+     "patching_rect": [
+      370.0,
+      150.0,
+      110.0,
+      22.0
+     ],
+     "text": "prepend FreqCar",
+     "numinlets": 1,
+     "numoutlets": 1,
+     "outlettype": [
+      ""
+     ]
+    }
+   },
+   {
+    "box": {
+     "id": "obj-12",
+     "maxclass": "live.dial",
+     "patching_rect": [
+      545.0,
+      98.0,
+      44.0,
+      48.0
+     ],
+     "numinlets": 1,
+     "numoutlets": 2,
+     "outlettype": [
+      "",
+      "float"
+     ],
+     "parameter_enable": 1,
+     "saved_attribute_attributes": {
+      "valueof": {
+       "parameter_initial": [
+        0.0
+       ],
+       "parameter_initial_enable": 1,
+       "parameter_longname": "gain",
+       "parameter_mmax": 1.0,
+       "parameter_mmin": 0.0,
+       "parameter_modmode": 0,
+       "parameter_shortname": "Gain",
+       "parameter_type": 0
+      }
+     },
+     "varname": "gain"
+    }
+   },
+   {
+    "box": {
+     "id": "obj-13",
+     "maxclass": "newobj",
+     "patching_rect": [
+      545.0,
+      72.0,
+      90.0,
+      22.0
+     ],
+     "text": "loadmess 0",
+     "numinlets": 1,
+     "numoutlets": 1,
+     "outlettype": [
+      ""
+     ]
+    }
+   },
+   {
+    "box": {
+     "id": "obj-14",
+     "maxclass": "newobj",
+     "patching_rect": [
+      545.0,
+      150.0,
+      110.0,
+      22.0
+     ],
+     "text": "prepend gain",
+     "numinlets": 1,
+     "numoutlets": 1,
+     "outlettype": [
+      ""
+     ]
+    }
+   },
+   {
+    "box": {
+     "id": "obj-15",
+     "maxclass": "newobj",
+     "patching_rect": [
+      20.0,
+      268.0,
+      260.0,
+      22.0
+     ],
+     "text": "csound7~ FM_2_modulation_index.csd",
+     "numinlets": 3,
+     "numoutlets": 3,
+     "outlettype": [
+      "signal",
+      "signal",
+      ""
+     ]
+    }
+   },
+   {
+    "box": {
+     "id": "obj-16",
+     "maxclass": "ezdac~",
+     "patching_rect": [
+      20.0,
+      318.0,
+      45.0,
+      45.0
+     ],
+     "numinlets": 2,
+     "numoutlets": 0
+    }
+   },
+   {
+    "box": {
+     "id": "obj-17",
+     "maxclass": "comment",
+     "patching_rect": [
+      300.0,
+      268.0,
+      400.0,
+      20.0
+     ],
+     "text": "control messages go to the RIGHTMOST inlet (inlet 2)",
+     "numinlets": 1,
+     "numoutlets": 0
+    }
+   }
+  ],
+  "lines": [
+   {
+    "patchline": {
+     "destination": [
+      "obj-3",
+      0
+     ],
+     "source": [
+      "obj-4",
+      0
+     ]
+    }
+   },
+   {
+    "patchline": {
+     "destination": [
+      "obj-5",
+      0
+     ],
+     "source": [
+      "obj-3",
+      0
+     ]
+    }
+   },
+   {
+    "patchline": {
+     "destination": [
+      "obj-6",
+      0
+     ],
+     "source": [
+      "obj-7",
+      0
+     ]
+    }
+   },
+   {
+    "patchline": {
+     "destination": [
+      "obj-8",
+      0
+     ],
+     "source": [
+      "obj-6",
+      0
+     ]
+    }
+   },
+   {
+    "patchline": {
+     "destination": [
+      "obj-9",
+      0
+     ],
+     "source": [
+      "obj-10",
+      0
+     ]
+    }
+   },
+   {
+    "patchline": {
+     "destination": [
+      "obj-11",
+      0
+     ],
+     "source": [
+      "obj-9",
+      0
+     ]
+    }
+   },
+   {
+    "patchline": {
+     "destination": [
+      "obj-12",
+      0
+     ],
+     "source": [
+      "obj-13",
+      0
+     ]
+    }
+   },
+   {
+    "patchline": {
+     "destination": [
+      "obj-14",
+      0
+     ],
+     "source": [
+      "obj-12",
+      0
+     ]
+    }
+   },
+   {
+    "patchline": {
+     "destination": [
+      "obj-15",
+      2
+     ],
+     "source": [
+      "obj-5",
+      0
+     ]
+    }
+   },
+   {
+    "patchline": {
+     "destination": [
+      "obj-15",
+      2
+     ],
+     "source": [
+      "obj-8",
+      0
+     ]
+    }
+   },
+   {
+    "patchline": {
+     "destination": [
+      "obj-15",
+      2
+     ],
+     "source": [
+      "obj-11",
+      0
+     ]
+    }
+   },
+   {
+    "patchline": {
+     "destination": [
+      "obj-15",
+      2
+     ],
+     "source": [
+      "obj-14",
+      0
+     ]
+    }
+   },
+   {
+    "patchline": {
+     "destination": [
+      "obj-16",
+      0
+     ],
+     "source": [
+      "obj-15",
+      0
+     ]
+    }
+   },
+   {
+    "patchline": {
+     "destination": [
+      "obj-16",
+      1
+     ],
+     "source": [
+      "obj-15",
+      1
+     ]
+    }
+   }
+  ]
+ }
+}

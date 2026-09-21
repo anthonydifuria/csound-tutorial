@@ -29,7 +29,7 @@ instr 1
  
  kShift[] init ifftsize
  
- Sfile     = "../../audio/1 Anechoic orchestra.wav"  ;FILE PATH
+ Sfile     = "../../../audio/1 Anechoic orchestra.wav"  ;FILE PATH
  a1, a2 diskin Sfile, 1, 0, 1    ;FILE PLAYER     
 
 

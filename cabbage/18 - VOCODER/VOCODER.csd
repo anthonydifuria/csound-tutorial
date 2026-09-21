@@ -47,7 +47,7 @@ endop
 
 instr 1
 
-    aMod diskin2 "../audio/PAROLAI.WAV", 1, 0, 1
+    aMod diskin2 "../../audio/PAROLAI.WAV", 1, 0, 1
 
     kFreq = p4 *4
     kBandW = 100

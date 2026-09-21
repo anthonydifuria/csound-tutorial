@@ -57,7 +57,7 @@ endin
 
 instr 1
 
-    aMod diskin2 "../audio/PAROLAI.WAV", 1, 0, 1;MODULATOR SIGNAL
+    aMod diskin2 "../../audio/PAROLAI.WAV", 1, 0, 1;MODULATOR SIGNAL
     ;aMod inch 1
 
     kFreq = p4 *2; frequency via keyboard

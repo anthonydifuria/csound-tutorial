@@ -22,7 +22,7 @@ ifftsize  = 2048
 ioverlap  = ifftsize / 4
 iwinsize  = ifftsize
 iwinshape = 1							;von-Hann window
-Sfile     = "../audio/1 Anechoic orchestra.wav"
+Sfile     = "../../audio/1 Anechoic orchestra.wav"
 ain,ain2 diskin Sfile, 1, 0, 1
 ;ain,ain2       soundin Sfile
 

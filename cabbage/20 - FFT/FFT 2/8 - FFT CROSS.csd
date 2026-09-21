@@ -23,8 +23,8 @@ giTabSize = (ifftsize / 2) + 2
 ioverlap  = ifftsize / 4
 iwinsize  = ifftsize
 iwinshape = 1							;von-Hann window
-Sfile     = "../../audio/1 Anechoic orchestra.wav"
-Sfile2     = "../../audio/3 Fiume.wav"
+Sfile     = "../../../audio/1 Anechoic orchestra.wav"
+Sfile2     = "../../../audio/3 Fiume.wav"
 ain,ain2 diskin Sfile, 1, 0, 1
 ain3,ain4 diskin Sfile2, 1, 0, 1
 

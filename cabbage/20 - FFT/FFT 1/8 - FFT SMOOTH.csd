@@ -32,7 +32,7 @@ instr 1
  
  kSmoth[] init ifftsize ;SMOOTH BUFFER
  
- Sfile     = "../../audio/1 Anechoic orchestra.wav"  ;FILE PATH
+ Sfile     = "../../../audio/1 Anechoic orchestra.wav"  ;FILE PATH
  a1, aOFF diskin Sfile, 1, 0, 1    ;FILE PLAYER  
  
        

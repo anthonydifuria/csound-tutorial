@@ -1,0 +1,56 @@
+<CsoundSynthesizer>
+
+    <CsOptions>
+        -n -d -+rtmidi=NULL -M0 -m0d 
+    </CsOptions>
+    
+    <CsInstruments>
+; Converted from the Cabbage version for csound7~ (Pure Data / Max).
+; Controls arrive from the patch as channels (chnget) with the same names as the Cabbage widgets.
+    ; Initialize the global variables. 
+    ksmps = 32
+    nchnls = 2
+    0dbfs = 1
+
+    ;UDO PYTHAGORAS
+    opcode Pitagora, Sk, kki
+
+        kin1, kin2, imode   xin           
+
+        if imode == 0 then
+          kOut = sqrt(kin1 * kin1 + kin2 * kin2) ;hypotenuse
+          SOut = " Lunghezza Ipotenusa = "
+        elseif imode == 1 then
+            kOut = sqrt(kin1 * kin1 - kin2 * kin2) ;leg 1 or 2
+            SOut = " Lunghezza Cateto = " 
+        else
+          kOut = 0
+          SOut = " Error - imode deve essere solo 0 o 1"
+        endif
+
+        xout SOut, kOut              
+
+    endop
+
+    instr 1
+        
+        iMode = 1;compute leg from hypotenuse  
+        ;the hypotenuse must be greater than the leg
+        kIpotenusa = 100
+        kCateto = 15
+        
+        SOut, kOut Pitagora kIpotenusa,kCateto,iMode
+
+        prints SOut
+        printk2 kOut
+
+    endin
+
+    </CsInstruments>
+    <CsScore>
+    ;causes Csound to run for about 7000 years...
+    f0 z
+    ;starts instrument 1 and runs it for a week
+    i1 0 [60*60*24*7] 
+    </CsScore>
+</CsoundSynthesizer>

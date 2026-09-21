@@ -1,0 +1,97 @@
+<CsoundSynthesizer>
+<CsOptions>
+-n -d -+rtmidi=NULL -M0 -m0d --midi-key-cps=4 --midi-velocity-amp=5
+</CsOptions>
+<CsInstruments>
+; Converted from the Cabbage version for csound7~ (Pure Data / Max).
+; Controls arrive from the patch as channels (chnget) with the same names as the Cabbage widgets.
+massign 0, 1 ; all MIDI channels -> instr 1 (the MIDI keyboard of the Cabbage version)
+; Initialize the global variables. 
+ksmps = 32
+nchnls = 2
+0dbfs = 1
+
+seed 0
+
+gaL init 0
+gaR init 0
+
+opcode BankFilt, a, aakkkii
+    aSigCar, aSigMod, kFreq, kBand, kFollow, iPartials, icnt  xin     
+                                 
+         icnt  =  icnt + 1 
+              
+         kFreqOut = kFreq * icnt;BAND CENTER   
+                                                                     
+         aSigModOut butbp aSigMod, kFreqOut, kBand;MODULATOR
+              
+         aEnv follow2 aSigModOut , kFollow , kFollow;ENV FOLLOWER
+            
+         aSigCarOut butbp aSigCar, kFreqOut, kBand;CARRIER
+         
+         aOut = aSigCarOut * aEnv;MODULATION                   
+ 
+         amix init 0                                        
+ 
+         if icnt < iPartials then 
+                                   
+             amix BankFilt aSigCar, aSigMod, kFreq, kBand, kFollow, iPartials, icnt
+              
+         endif                                                   
+                                                  
+     xout amix + aOut
+     
+endop
+
+
+instr 1
+
+    SaudioIn1 chnget "audiofile1"
+    aMod diskin2 SaudioIn1, 1, 0, 1
+
+    kFreq = p4 *4
+    kBandW = 100
+    iPartials = 20
+    icnt init 0
+        
+    kFollow = 0.3;Attack and decay of the env follower
+   
+    aCar vco2 p5, p4;CARRIER
+                          
+    aOut BankFilt aCar ,aMod, kFreq, kBandW, kFollow, iPartials, icnt
+    
+    aEnv madsr 0.01, 0.01,0.5, 2
+
+    kResizeAmp = 20000 / kBandW
+
+    aL,aR pan2 (aEnv * aOut) * kResizeAmp, rnd(1)
+
+    gaL = aL + gaL
+    gaR = aR + gaR
+
+  
+endin
+
+instr 50
+
+
+aL = gaL
+aR = gaR
+
+ outs aL,aR 
+ 
+ gaL = 0
+ gaR = 0
+
+endin
+
+
+
+</CsInstruments>
+<CsScore>
+;causes Csound to run for about 7000 years...
+f0 z
+; (started from the patch) i 50 0 [60*60*24*7]
+
+</CsScore>
+</CsoundSynthesizer>
