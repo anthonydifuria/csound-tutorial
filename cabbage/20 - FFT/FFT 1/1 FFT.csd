@@ -21,8 +21,8 @@ rslider bounds(296, 162, 100, 100), channel("gain"), range(0, 1, 0, 1, .01), tex
         ihopsize = 128   ;OVERLAP SIZE
         ifftsize = 1024  ;FFT SIZE 
         iolaps = ifftsize/ihopsize ;OVERLAPS
-        ibw = sr/ifftsize ; BIN BANDWITH
-        kcnt init 0    ;CONTATORE
+        ibw = sr/ifftsize ; BIN BANDWIDTH
+        kcnt init 0    ;COUNTER
         krow init 0
     
         kOla[] init ifftsize ;BUFFER OVERLAPS
@@ -55,17 +55,17 @@ rslider bounds(296, 162, 100, 100), channel("gain"), range(0, 1, 0, 1, .01), tex
                 ki += 1
             od
   
-            ;CONTATORE
-            krow = (krow + 1) % iolaps ;CONTATORE OVERLAPS
-            kcnt = 0 ;CONTATORE FFT TORNA A 0
+            ;COUNTER
+            krow = (krow + 1) % iolaps ;OVERLAPS COUNTER
+            kcnt = 0 ;FFT COUNTER RETURNS TO 0
         endif
 
-        ;SCRIVO E LEGGO BUFFER UNIDIMENSIONALE
+        ;WRITE AND READ ONE-DIMENSIONAL BUFFER
         kIn shiftin a1
         a2 shiftout kOla / iolaps
         out a2
 
-        ;INCREMENTO CONTATORE FFT
+        ;FFT COUNTER INCREMENT
         kcnt += ksmps
  
     endin

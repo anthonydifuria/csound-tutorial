@@ -22,15 +22,15 @@ opcode BankFilt, a, aakkkii
                                  
          icnt  =  icnt + 1 
               
-         kFreqOut = kFreq * icnt;CENTRO BANDA   
+         kFreqOut = kFreq * icnt;BAND CENTER   
                                                                      
-         aSigModOut butbp aSigMod, kFreqOut, kBand;MODULANTE
+         aSigModOut butbp aSigMod, kFreqOut, kBand;MODULATOR
               
          aEnv follow2 aSigModOut , kFollow , kFollow;ENV FOLLOWER
             
-         aSigCarOut butbp aSigCar, kFreqOut, kBand;PORTANTE
+         aSigCarOut butbp aSigCar, kFreqOut, kBand;CARRIER
          
-         aOut = aSigCarOut * aEnv;MODULAZIONE                   
+         aOut = aSigCarOut * aEnv;MODULATION                   
  
          amix init 0                                        
  
@@ -54,9 +54,9 @@ instr 1
     iPartials = 20
     icnt init 0
         
-    kFollow = 0.3;Attacco e decadimento env follower
+    kFollow = 0.3;Attack and decay of the env follower
    
-    aCar vco2 p5, p4;PORTANTE
+    aCar vco2 p5, p4;CARRIER
                           
     aOut BankFilt aCar ,aMod, kFreq, kBandW, kFollow, iPartials, icnt
     

@@ -18,7 +18,7 @@ instr 1
 kFreeze cabbageGetValue "freeze"
 
 ifftsize  = 2048
-ibw = sr / ifftsize ; BIN BANDWITH
+ibw = sr / ifftsize ; BIN BANDWIDTH
 giTabSize = ifftsize 
 ioverlap  = ifftsize / 4
 iwinsize  = ifftsize
@@ -35,8 +35,8 @@ fftin     pvsanal ain, ifftsize, ioverlap, iwinsize, iwinshape	;fft-analysis of 
 
 kCount init 0
 
-   kCutFreq = 4000 ;FREQUENZA DI TAGLIO
-   kBandeLOWPASS = int((kCutFreq) / ibw) ;NUMERO DI BANDE HIGHPASS
+   kCutFreq = 4000 ;CUTOFF FREQUENCY
+   kBandeLOWPASS = int((kCutFreq) / ibw) ;NUMBER OF HIGHPASS BANDS
 
     if kCount > ioverlap then
    

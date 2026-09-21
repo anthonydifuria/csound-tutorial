@@ -18,7 +18,7 @@ instr 1
 kFreeze cabbageGetValue "freeze"
 
 ifftsize  = 4096
-ibw = sr / ifftsize ; BIN BANDWITH
+ibw = sr / ifftsize ; BIN BANDWIDTH
 iNumBin = ifftsize / 2
 giTabSize = (ifftsize / 2) + 2
 ioverlap  = ifftsize / 4

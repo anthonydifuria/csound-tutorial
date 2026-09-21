@@ -24,24 +24,24 @@ opcode VOCODER_MCADAMS, a, aakkkkkii
          icnt  =  icnt + 1 
             
          ;McAdams - F = Fo * n^a + k       
-         kFreqMcAdams = kFreq * icnt^ kA_mcadams + kK_mcadams;FREQUENZA CENTRALE con McAdams   
+         kFreqMcAdams = kFreq * icnt^ kA_mcadams + kK_mcadams;CENTER FREQUENCY with McAdams   
          
                                                                      
-         aSigModOut butbp aSigMod, kFreqMcAdams, kBand;MODULANTE
+         aSigModOut butbp aSigMod, kFreqMcAdams, kBand;MODULATOR
               
-         aEnv follow2 aSigModOut , kFollow , kFollow;ENV FOLLOWER MODULANTE
+         aEnv follow2 aSigModOut , kFollow , kFollow;MODULATOR ENV FOLLOWER
             
-         aSigCarOut butbp aSigCar, kFreqMcAdams, kBand;PORTANTE
+         aSigCarOut butbp aSigCar, kFreqMcAdams, kBand;CARRIER
          
-         aOut = aSigCarOut * aEnv ;MODULAZIONE                  
+         aOut = aSigCarOut * aEnv ;MODULATION                  
  
          amix init 0                                        
  
          if icnt < iPartials then 
              
-             ;chiamerà tante volte se stesso fino alla quantità di parziali
-             ;vuol dire che avremo iPartials filtri in parallelo contemporaneamente
-             ;un banco di filtri                      
+             ;will call itself as many times as the number of partials
+             ;it means we will have iPartials filters in parallel at the same time
+             ;a filter bank                      
              amix VOCODER_MCADAMS aSigCar, aSigMod, kFreq, kBand, kFollow,kA_mcadams, kK_mcadams, iPartials, icnt
              
               
@@ -57,29 +57,29 @@ endin
 
 instr 1
 
-    aMod diskin2 "../audio/PAROLAI.WAV", 1, 0, 1;SEGNALE MODULANTE
+    aMod diskin2 "../audio/PAROLAI.WAV", 1, 0, 1;MODULATOR SIGNAL
     ;aMod inch 1
 
-    kFreq = p4 *2; frequenza attraverso keybord
-    kBand = 5; larghezza di banda  - filtro passa-banda
-    iPartials = 20; numero di filtri i(gkPartias)
-    kA_mcadams = 1; a di mcadams
-    kK_mcadams = 0;k di mcandams
+    kFreq = p4 *2; frequency via keyboard
+    kBand = 5; bandwidth  - band-pass filter
+    iPartials = 20; number of filters i(gkPartias)
+    kA_mcadams = 1; McAdams a
+    kK_mcadams = 0;McAdams k
     
-    icnt init 0; inizializzaione counter per il calcolo del banco di filtri
+    icnt init 0; counter initialization for the filter bank computation
         
-    kFollow = 0.01;Attacco e decadimento env follower del vocoder
+    kFollow = 0.01;Attack and decay of the vocoder env follower
    
-    aCar vco2 p5, p4;PORTANTE
+    aCar vco2 p5, p4;CARRIER
     ;aCar inch 2 
                                                
     aOut VOCODER_MCADAMS aCar ,aMod, kFreq, kBand, kFollow,kA_mcadams, kK_mcadams, iPartials, icnt
     
-    aEnv madsr 0.01, 0.01,0.5, 0.1;inviluppo del suono risultante
+    aEnv madsr 0.01, 0.01,0.5, 0.1;envelope of the resulting sound
 
-    kResizeAmp = 200 / kBand ;ricalcolo ampiezza proporzionale rispetto alla larghezza di banda del filtro
+    kResizeAmp = 200 / kBand ;recompute amplitude proportional to the filter bandwidth
 
-    aL,aR pan2 (aEnv * aOut) * kResizeAmp, rnd(1);lateralizzazione L-R
+    aL,aR pan2 (aEnv * aOut) * kResizeAmp, rnd(1);L-R panning
 
 
     gaL = aL + gaL

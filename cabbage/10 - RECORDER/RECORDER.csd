@@ -24,21 +24,21 @@
         gkFileRecorded        init    0
 
         instr    1
-         gaL,gaR ins;FLUSSO AUDIO DA REGISTRARE
+         gaL,gaR ins;AUDIO STREAM TO RECORD
          gkrecord    cabbageGetValue    "record"
          kRecStart   trigger    gkrecord,0.5,0
          gkleft rms gaL
          gkright rms gaR
 
          if kRecStart == 1  then
-                     event     "i",9000,0,-1 ;STRUMENTO DA CHIAMARE PER REGISTRARE
+                     event     "i",9000,0,-1 ;INSTRUMENT TO CALL FOR RECORDING
          endif
   
         endin
 
-        instr 9000;STRUMENTO DI REGISTRAZIONE
+        instr 9000;RECORDING INSTRUMENT
         
-         if gkrecord==0 then;SPEGNE LA REGIATRAZIONE
+         if gkrecord==0 then;STOPS THE RECORDING
             cabbageSetValue "left", portk(0, .25), metro(10)
             cabbageSetValue "right", portk(0, .25), metro(10)
                      turnoff
@@ -59,11 +59,11 @@
          Sfilnam     sprintf   "%s_%s_%02d_%s_%s_%s.wav", Syear, Smonth, iday, Shor,Smin, Ssec
          gSname      sprintf   "FileRecorder_%s", Sfilnam
 
-         if gkrecord == 1 then ;REGISTRAZIONE
+         if gkrecord == 1 then ;RECORDING
              
             cabbageSetValue "left", portk(gkleft*10, .25), metro(10)
             cabbageSetValue "right", portk(gkright*10, .25), metro(10)
-            fout gSname, 8, gaL, gaR ;REGISTRAZIONE
+            fout gSname, 8, gaL, gaR ;RECORDING
             
          endif
  

@@ -1,0 +1,65 @@
+<Cabbage>
+    form caption("GENERATOR 2") size(700, 400), guiMode("queue") pluginId("def1")
+    rslider bounds(496, 296, 100, 100), channel("out"), range(0, 1, 0.25, 1, 0.01), text("OUTPUT"), trackerColour(0, 255, 0, 255), outlineColour(0, 0, 0, 50), textColour(0, 0, 0, 255)
+
+    rslider bounds(10, 10, 100, 100), channel("dur"), range(0.01, 1, 0.5, 1, 0.01), text("DUR"), trackerColour(0, 255, 0, 255), outlineColour(0, 0, 0, 50), textColour(0, 0, 0, 255)
+    rslider bounds(110, 10, 100, 100), channel("den"), range(1, 20, 1, 1, 0.01), text("DEN"), trackerColour(0, 255, 0, 255), outlineColour(0, 0, 0, 50), textColour(0, 0, 0, 255)
+
+</Cabbage>
+
+<CsoundSynthesizer>
+
+    <CsOptions>
+    -n -d -+rtmidi=NULL -M0 -m0d 
+    </CsOptions>
+
+    <CsInstruments>
+        ; Initialize the global variables. 
+        ksmps = 32
+        nchnls = 2
+        0dbfs = 1
+
+        giStrumento2 init 0; initialize the counter variable of instrument 2
+
+        instr GUI; instrument for the graphical interface, always on (see in the score)
+                    
+            gkDur cabbageGetValue "dur";duration of each sound event
+            gkDen cabbageGetValue "den";density - sound events / second
+
+        endin
+
+        instr 1
+
+            ktrig metro gkDen;density - EVENTS PER SECOND
+            schedkwhen ktrig,0,0,2,0,gkDur ;turns on instrument 2 - In detail SEE 3_GENERATOR.csd
+
+        endin
+
+        instr 2
+
+            ;will print the counter value initialized to 0 
+            ;and then will print the values indefinitely (see in console) 
+            ; see counter giStrumento2 = giStrumento2 + 1
+            print giStrumento2
+            ;instr 2:  giStrumento2 = 0.000
+            ;instr 2:  giStrumento2 = 1.000
+            ;instr 2:  giStrumento2 = 2.000
+            ;instr 2:  giStrumento2 = 3.000.........
+
+            ;Counter from 1 to infinity 
+            ;increases by one every time instrument 2 is called
+            giStrumento2 = giStrumento2 + 1
+
+        endin
+
+    </CsInstruments>
+
+    <CsScore>
+        ;causes Csound to run for about 7000 years...
+        f0 z
+        ;starts instrument 1 and runs it for a week
+        i "GUI" 0 [60*60*24*7] 
+        i1 0 [60*60*24*7] 
+    </CsScore>
+
+</CsoundSynthesizer>

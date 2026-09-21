@@ -16,7 +16,7 @@ instr 1
 
 
 ifftsize  = 2048
-ibw = sr / ifftsize ; BIN BANDWITH
+ibw = sr / ifftsize ; BIN BANDWIDTH
 giTabSize = ifftsize 
 ioverlap  = ifftsize / 4
 iwinsize  = ifftsize
@@ -33,11 +33,11 @@ fftin     pvsanal ain, ifftsize, ioverlap, iwinsize, iwinshape	;fft-analysis of 
 
 kCount init 0   
     
-   kCenterFreq = 2000 ;FREQUENZA DI TAGLIO
+   kCenterFreq = 2000 ;CUTOFF FREQUENCY
    kFreqBW = 2000
 
-   kBandeInf = int(((kCenterFreq) - (kFreqBW / 2)) / ibw) ;NUMERO DI BANDE INFERIORI
-   kBandeSup = int(((kCenterFreq) + (kFreqBW / 2))  / ibw);NUMERO DI BANDE SUPERIORI
+   kBandeInf = int(((kCenterFreq) - (kFreqBW / 2)) / ibw) ;NUMBER OF LOWER BANDS
+   kBandeSup = int(((kCenterFreq) + (kFreqBW / 2))  / ibw);NUMBER OF UPPER BANDS
    
 
     if kCount > ioverlap then

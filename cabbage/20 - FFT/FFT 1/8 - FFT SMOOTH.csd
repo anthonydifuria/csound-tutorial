@@ -21,8 +21,8 @@ instr 1
  ifftsize = 2048  ;FFT SIZE
  ihopsize = ifftsize / iolap ;OVERLAP SIZE 
  iolaps = ifftsize/ihopsize ;OVERLAPS
- ibw = sr/ifftsize ; BIN BANDWITH
- kcnt init 0    ;CONTATORE
+ ibw = sr/ifftsize ; BIN BANDWIDTH
+ kcnt init 0    ;COUNTER
  krow init 0
 
 
@@ -30,7 +30,7 @@ instr 1
  kIn[] init ifftsize  ;INPUT BUFFER
  kOut[][] init iolaps, ifftsize ;OUTPUTS BUFFER
  
- kSmoth[] init ifftsize ;SMOTH BUFFER
+ kSmoth[] init ifftsize ;SMOOTH BUFFER
  
  Sfile     = "../../audio/1 Anechoic orchestra.wav"  ;FILE PATH
  a1, aOFF diskin Sfile, 1, 0, 1    ;FILE PLAYER  
@@ -63,17 +63,17 @@ if kcnt >= ihopsize then
      ki += 1
    od
   
-  ;CONTATORE
-  krow = (krow + 1) % iolaps ;CONTATORE OVERLAPS
-  kcnt = 0 ;CONTATORE FFT TORNA A 0
+  ;COUNTER
+  krow = (krow + 1) % iolaps ;OVERLAPS COUNTER
+  kcnt = 0 ;FFT COUNTER RETURNS TO 0
  endif
 
- ;SCRIVO E LEGGO BUFFER UNIDIMENSIONALE
+ ;WRITE AND READ ONE-DIMENSIONAL BUFFER
  kIn shiftin a1
  a2 shiftout kOla / iolaps
     outs a2,a2
 
- ;INCREMENTO CONTATORE FFT
+ ;FFT COUNTER INCREMENT
  
  kcnt += ksmps * 1
 

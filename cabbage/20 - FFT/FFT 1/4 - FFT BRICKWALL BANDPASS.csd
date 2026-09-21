@@ -19,8 +19,8 @@ instr 1
  ihopsize = 128   ;OVERLAP SIZE
  ifftsize = 1024  ;FFT SIZE 
  iolaps = ifftsize/ihopsize ;OVERLAPS
- ibw = sr/ifftsize ; BIN BANDWITH
- kcnt init 0    ;CONTATORE
+ ibw = sr/ifftsize ; BIN BANDWIDTH
+ kcnt init 0    ;COUNTER
  krow init 0
 
  kOla[] init ifftsize ;BUFFER OVERLAPS
@@ -37,11 +37,11 @@ if kcnt >= ihopsize then
  kSpec[] rfft kWin ;FFT
  
  
-   iFreq = 200 ;FREQUENZA DI TAGLIO
+   iFreq = 200 ;CUTOFF FREQUENCY
    iFreqBW = 3000
 
-   iBandeInf = int(((iFreq) - (iFreqBW / 2)) / ibw) ;NUMERO DI BANDE INFERIORE
-   iBandeSup = int(((iFreq) + (iFreqBW / 2))  / ibw);NUMERO DI BANDE SUPERIORE
+   iBandeInf = int(((iFreq) - (iFreqBW / 2)) / ibw) ;NUMBER OF LOWER BANDS
+   iBandeSup = int(((iFreq) + (iFreqBW / 2))  / ibw);NUMBER OF UPPER BANDS
    
    ki = 0 
    until ki == int(ifftsize) do
@@ -72,17 +72,17 @@ if kcnt >= ihopsize then
      ki += 1
    od
   
-  ;CONTATORE
-  krow = (krow + 1) % iolaps ;CONTATORE OVERLAPS
-  kcnt = 0 ;CONTATORE FFT TORNA A 0
+  ;COUNTER
+  krow = (krow + 1) % iolaps ;OVERLAPS COUNTER
+  kcnt = 0 ;FFT COUNTER RETURNS TO 0
  endif
 
- ;SCRIVO E LEGGO BUFFER UNIDIMENSIONALE
+ ;WRITE AND READ ONE-DIMENSIONAL BUFFER
  kIn shiftin a1
  a2 shiftout kOla / iolaps
     out a2
 
- ;INCREMENTO CONTATORE FFT
+ ;FFT COUNTER INCREMENT
  kcnt += ksmps
  
 endin

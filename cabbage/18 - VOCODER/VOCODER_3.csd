@@ -20,7 +20,7 @@ gaR init 0
 opcode BankFilt, a, aakkkkii
     aSigCar, aSigMod, kFreq, kBand, kFollow, kBwTotale, iPartials, icnt  xin     
          
-         kFreqOut = kFreq + kBwTotale * (icnt / iPartials);CENTRO BANDA 
+         kFreqOut = kFreq + kBwTotale * (icnt / iPartials);BAND CENTER 
                                                                                                                 
          icnt  =  icnt + 1  
          
@@ -28,13 +28,13 @@ opcode BankFilt, a, aakkkkii
                   
          print i(kBandResize) 
                                                                      
-         aSigModOut butbp aSigMod, kFreqOut, kBandResize;MODULANTE
+         aSigModOut butbp aSigMod, kFreqOut, kBandResize;MODULATOR
               
          aEnv follow2 aSigModOut , kFollow , kFollow;ENV FOLLOWER
             
-         aSigCarOut butbp aSigCar, kFreqOut, kBandResize;PORTANTE
+         aSigCarOut butbp aSigCar, kFreqOut, kBandResize;CARRIER
          
-         aOut = aSigCarOut * aEnv;MODULAZIONE                   
+         aOut = aSigCarOut * aEnv;MODULATION                   
  
          amix init 0                                        
  
@@ -62,9 +62,9 @@ instr 1
     
     kBwTotale = (p4 * iPartials) * kResizeBWTotale
         
-    kFollow = 0.5;Attacco e decadimento env follower
+    kFollow = 0.5;Attack and decay of the env follower
    
-    aCar vco2 p5, p4;PORTANTE
+    aCar vco2 p5, p4;CARRIER
                           
     aOut  BankFilt aCar ,aMod, kFreq, kBand, kFollow, kBwTotale, iPartials, icnt
     
