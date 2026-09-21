@@ -1,0 +1,26 @@
+# macOS
+.DS_Store
+._*
+.AppleDouble
+.LSOverride
+.Spotlight-V100
+.Trashes
+.fseventsd
+Icon?
+
+# Windows
+Thumbs.db
+desktop.ini
+
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+*~
+*.bak
+*.tmp
+
+# Csound / Cabbage: file temporanei e registrazioni generate localmente
+*.csd.bak
+*.csd~
+*.asd
